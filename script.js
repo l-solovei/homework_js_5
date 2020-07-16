@@ -1,4 +1,4 @@
-//DONE==============================================
+//==============================================
 //-  Створити функцію конструктор для об'єкту який описує теги
 //Властивості
 // -назва тегу
@@ -158,7 +158,7 @@ console.log(select_tag);
 //==============================================
 
 
-//DONE==============================================
+//==============================================
 //-  Створити класс  для об'єкту який описує теги
 //Властивості
 // -назва тегу
@@ -312,39 +312,43 @@ console.log(tag_select);
 //-- changeYear (newValue) - змінює рік випуску на значення newValue
 //-- addDriver (driver) - приймає об'єкт який "водій" з довільним набором полів, і доавляет його в поточний об'єкт car
 //==============================================
-
-let car_obj = {model : 'x6', brand : 'BMW', year : 1759, max_speed : 468, engine : 12};
-
-function drive(){
-	console.log(`їдемо зі швидкістю ${car_obj.max_speed} на годину`);
-}
-
-function info(){
-	console.log(`Інформація про машину: 
-		модель - ${car_obj.model}, 
-		виробник - ${car_obj.brand}, 
-		рік випуску - ${car_obj.year}, 
-		максимальна швидкість - ${car_obj.max_speed}, 
-		об'єм двигуна - ${car_obj.engine}`);
-	}
-
-function increaseMaxSpeed(newSpeed){
-	car_obj.max_speed = newSpeed;
-	}
+let car_obj = {
+	model : 'x6', 
+	brand : 'BMW', 
+	year : 1759, 
+	max_speed : 468, 
+	engine : 12, 
+	drive : function(){
+		console.log(`їдемо зі швидкістю ${this.max_speed} на годину`)
+	},
 	
-function changeYear(newValue){
-	car_obj.year = newValue;
-	}
+	info : function(){
+		console.log(`Інформація про машину: 
+			модель - ${this.model}, 
+			виробник - ${this.brand}, 
+			рік випуску - ${this.year}, 
+			максимальна швидкість - ${this.max_speed}, 
+			об'єм двигуна - ${this.engine}`);
+	},
 	
-function addDriver(driver){
-	car_obj.driver = driver;
+	increaseMaxSpeed : function(newSpeed){
+		this.max_speed = newSpeed;
+	},
+	
+	changeYear : function(newValue){
+		this.year = newValue;
+	},
+	
+	addDriver : function(driver){
+		this.driver = driver;
 	}
+};
 
-drive();
-info();
-increaseMaxSpeed(2847);
-changeYear(3847);
-addDriver({name:'Max', age:23, job:'marketing'});
+car_obj.drive();
+car_obj.info();
+car_obj.increaseMaxSpeed(2847);
+car_obj.changeYear(3847);
+car_obj.addDriver({name:'Max', age:23, job:'marketing'});
 console.log(car_obj);
 //==============================================
 //- Створити функцію конструктор яка дозволяє створювати об'єкти car, з властивостями модель, виробник, рік випуску, максимальна швидкість, об'єм двигуна. додати в об'єкт функції:
@@ -473,6 +477,13 @@ class Prince{
 		this.age = age;
 		this.find_size = find_size;
 	}
+	findCinderella(arr_cinderella){
+		for (let c of arr_cinderella){
+			if(this.find_size === c.size){
+			console.log(c);
+			}
+		}
+	}
 }
 	
 let cinderella1 = new Cinderella('Anna', 23, 35);
@@ -499,19 +510,13 @@ let arr_cinderella = [cinderella1,
 	cinderella9,
 	cinderella10]
 	
-for (let c of arr_cinderella){
-	if(prince1.find_size === c.size){
-		console.log(c);
-	}
-}
-
+prince1.findCinderella(arr_cinderella);
 //==============================================
 //-створити функцію конструктор попелюшка з полями ім'я, вік, розмір ноги
 //--Створити 10 попелюшок , покласти їх в масив
 //--Сторити об'єкт типу "принц" за допомоги функції конструктора з полями ім'я, вік, туфелька яку він знайшов, та функцію "пошук попелюшки"
 //-- функція повинна приймати масив попелюшок, та шукає ту котра йому підходить
 //==============================================
-
 function CinderellaFunc(name, age, size){
 		this.name = name;
 		this.age = age;
@@ -522,7 +527,17 @@ function PrinceFunc(name, age, find_size){
 		this.name = name;
 		this.age = age;
 		this.find_size = find_size;
+		
+		this.findCinderella1 = function	findCinderella1(arr_cinderella1){
+		for (let c1 of arr_cinderella1){
+			if(this.find_size === c1.size){
+			console.log(c1);
+			}
+		}
+	}
 }
+	
+		
 	
 let cinderella11 = new CinderellaFunc('Anna', 23, 35);
 let cinderella21 = new CinderellaFunc('Marie', 26, 41);
@@ -548,8 +563,5 @@ let arr_cinderella1 = [cinderella11,
 	cinderella91,
 	cinderella101]
 	
-for (let c1 of arr_cinderella1){
-	if(prince11.find_size === c1.size){
-		console.log(c1);
-	}
-}
+
+prince11.findCinderella1(arr_cinderella1);
